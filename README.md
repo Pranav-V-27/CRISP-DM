@@ -84,3 +84,5 @@ You can install additional libraries using `pip` as needed.
 - Guest Investment Equity - Guest Investment Equity, in percentages
 - Guest Debt Amount - Guest Debt Amount, in lakhs INR
 
+online app for this code 
+https://crisp-dm.streamlit.app/ 
