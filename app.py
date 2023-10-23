@@ -5,6 +5,22 @@ import joblib
 # Load the trained model
 model_filename = 'random_forest_model.joblib'
 loaded_model = joblib.load(model_filename)
+predcol = ['Number of Presenters', 'Male Presenters', 'Female Presenters',
+       'Transgender Presenters', 'Couple Presenters', 'Pitchers Average Age',
+       'Started in', 'Yearly Revenue', 'Monthly Sales', 'Gross Margin',
+       'Net Margin', 'Original Ask Amount', 'Original Offered Equity',
+       'Valuation Requested', 'Total Deal Amount', 'Total Deal Equity',
+       'Total Deal Debt', 'Debt Interest', 'Deal Valuation',
+       'Number of sharks in deal', 'Has Patents', 'Industry_Agriculture',
+       'Industry_Animal/Pets', 'Industry_Beauty/Fashion', 'Industry_Education',
+       'Industry_Electronics', 'Industry_Entertainment', 'Industry_Food',
+       'Industry_Furnishing/Household', 'Industry_Hardware',
+       'Industry_Liquor/Beverages', 'Industry_Manufacturing',
+       'Industry_Medical/Health', 'Industry_Services', 'Industry_Sports',
+       'Industry_Technology/Software', 'Industry_Vehicles/Electrical Vehicles',
+       'Region_Central', 'Region_East', 'Region_North', 'Region_Northeast',
+       'Region_South', 'Region_West', 'Deal has conditions_no',
+       'Deal has conditions_yes']
 
 # Load the data preprocessing steps
 _, encoded_columns = joblib.load('data_preprocessing.joblib')
@@ -87,7 +103,7 @@ for column in missing_columns:
     new_data[column] = 0  # Add missing columns with all zeros
 
 if st.button("Make Prediction"):
-    prediction = loaded_model.predict(new_data)
+    prediction = loaded_model.predict(new_data[predcol])
     st.subheader("Prediction")
     if prediction[0] == 1:
         st.write("Accepted Offer")
