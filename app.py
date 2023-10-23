@@ -7,7 +7,7 @@ model_filename = 'Model/random_forest_model.joblib'
 loaded_model = joblib.load(model_filename)
 
 # Load the data preprocessing steps
-label_encoder, encoded_columns = joblib.load('data_preprocessing.joblib')
+label_encoder, encoded_columns = joblib.load('Model/data_preprocessing.joblib')
 
 # Title
 st.title("Shark Tank India Prediction App")
