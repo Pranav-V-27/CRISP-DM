@@ -32,6 +32,21 @@ st.sidebar.header("User Input")
 #startup_name = st.sidebar.text_input("Startup Name", "Your Startup Name")
 number_of_presenters = st.sidebar.number_input("Number of Presenters", min_value=0, max_value=10, value=1)
 pitchers_average_age = st.sidebar.selectbox("Pitchers Average Age", ['25-30', '30-35', '35-40', 'Other'])
+started_in = st.sidebar.number_input("Started in", min_value=0, value=2020)
+yearly_revenue = st.sidebar.number_input("Yearly Revenue", min_value=0, value=100)
+monthly_sales = st.sidebar.text_input("Monthly Sales", "Monthly sales in lakhs")
+gross_margin = st.sidebar.number_input("Gross Margin", min_value=0, value=10)
+net_margin = st.sidebar.number_input("Net Margin", min_value=0, value=5)
+original_ask_amount = st.sidebar.number_input("Original Ask Amount", min_value=0, value=100)
+original_offered_equity = st.sidebar.number_input("Original Offered Equity", min_value=0, value=20)
+valuation_requested = st.sidebar.number_input("Valuation Requested", min_value=0, value=200)
+total_deal_amount = st.sidebar.number_input("Total Deal Amount", min_value=0, value=300)
+total_deal_equity = st.sidebar.number_input("Total Deal Equity", min_value=0, value=50)
+total_deal_debt = st.sidebar.number_input("Total Deal Debt", min_value=0, value=30)
+debt_interest = st.sidebar.number_input("Debt Interest", min_value=0, value=2)
+deal_valuation = st.sidebar.number_input("Deal Valuation", min_value=0, value=250)
+number_of_sharks_in_deal = st.sidebar.number_input("Number of Sharks in Deal", min_value=0, value=3)
+has_patents = st.sidebar.selectbox("Has Patents", ['No', 'Yes'])
 industry = st.sidebar.selectbox("Industry", ['Agriculture', 'Animal/Pets', 'Beauty/Fashion', 'Education', 'Electronics', 'Entertainment', 'Food', 'Furnishing/Household', 'Hardware', 'Liquor/Beverages', 'Manufacturing', 'Medical/Health', 'Services', 'Sports', 'Technology/Software', 'Vehicles/Electrical Vehicles'])
 region = st.sidebar.selectbox("Region", ['Central', 'East', 'North', 'Northeast', 'South', 'West'])
 deal_has_conditions = st.sidebar.selectbox("Deal has conditions", ['no', 'yes'])
@@ -41,6 +56,20 @@ new_data = pd.DataFrame({
     #'Startup Name': [startup_name],
     'Number of Presenters': [number_of_presenters],
     'Pitchers Average Age': [pitchers_average_age],
+    'Started in': [started_in],
+    'Yearly Revenue': [yearly_revenue],
+    'Gross Margin': [gross_margin],
+    'Net Margin': [net_margin],
+    'Original Ask Amount': [original_ask_amount],
+    'Original Offered Equity': [original_offered_equity],
+    'Valuation Requested': [valuation_requested],
+    'Total Deal Amount': [total_deal_amount],
+    'Total Deal Equity': [total_deal_equity],
+    'Total Deal Debt': [total_deal_debt],
+    'Debt Interest': [debt_interest],
+    'Deal Valuation': [deal_valuation],
+    'Number of Sharks in Deal': [number_of_sharks_in_deal],
+    'Has Patents': [has_patents],
     'Industry': [industry],
     'Region': [region],
     'Deal has conditions': [deal_has_conditions]
