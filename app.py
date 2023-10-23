@@ -29,7 +29,7 @@ st.title("Shark Tank India Prediction App")
 st.sidebar.header("User Input")
 
 # Input form
-startup_name = st.sidebar.text_input("Startup Name", "Your Startup Name")
+#startup_name = st.sidebar.text_input("Startup Name", "Your Startup Name")
 number_of_presenters = st.sidebar.number_input("Number of Presenters", min_value=0, max_value=10, value=1)
 pitchers_average_age = st.sidebar.selectbox("Pitchers Average Age", ['25-30', '30-35', '35-40', 'Other'])
 industry = st.sidebar.selectbox("Industry", ['Agriculture', 'Animal/Pets', 'Beauty/Fashion', 'Education', 'Electronics', 'Entertainment', 'Food', 'Furnishing/Household', 'Hardware', 'Liquor/Beverages', 'Manufacturing', 'Medical/Health', 'Services', 'Sports', 'Technology/Software', 'Vehicles/Electrical Vehicles'])
@@ -38,7 +38,7 @@ deal_has_conditions = st.sidebar.selectbox("Deal has conditions", ['no', 'yes'])
 
 # Prepare data for prediction
 new_data = pd.DataFrame({
-    'Startup Name': [startup_name],
+    #'Startup Name': [startup_name],
     'Number of Presenters': [number_of_presenters],
     'Pitchers Average Age': [pitchers_average_age],
     'Industry': [industry],
