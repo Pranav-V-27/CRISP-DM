@@ -79,7 +79,7 @@ new_data = pd.DataFrame({
 new_data['Pitchers Average Age'] = new_data['Pitchers Average Age'].apply(custom_label_encode)
 
 # Perform one-hot encoding on new data
-new_data = pd.get_dummies(new_data, columns=['Industry', 'Region', 'Deal has conditions'])
+new_data = pd.get_dummies(new_data, columns=['Industry', 'Region', 'Deal has conditions', 'Has Patents'])
 
 # Ensure the columns match the encoded columns from the preprocessing steps
 missing_columns = set(encoded_columns) - set(new_data.columns)
