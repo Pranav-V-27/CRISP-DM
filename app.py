@@ -1,14 +1,26 @@
 import streamlit as st
 import pandas as pd
 import joblib
-from sklearn.preprocessing import LabelEncoder
+
 # Load the trained model
 model_filename = 'random_forest_model.joblib'
 loaded_model = joblib.load(model_filename)
 
 # Load the data preprocessing steps
-label_encoder, encoded_columns = joblib.load('data_preprocessing.joblib')
-label_encoder = LabelEncoder(handle_unknown='use_encoded_value', unknown_value=-1)
+_, encoded_columns = joblib.load('data_preprocessing.joblib')
+
+# Define a custom label encoding function for 'Pitchers Average Age'
+def custom_label_encode(value):
+    if value == '25-30':
+        return 0
+    elif value == '30-35':
+        return 1
+    elif value == '35-40':
+        return 2
+    # Add more conditions as needed
+    else:
+        # Handle unknown values
+        return -1
 
 # Title
 st.title("Shark Tank India Prediction App")
@@ -19,7 +31,7 @@ st.sidebar.header("User Input")
 # Input form
 startup_name = st.sidebar.text_input("Startup Name", "Your Startup Name")
 number_of_presenters = st.sidebar.number_input("Number of Presenters", min_value=0, max_value=10, value=1)
-pitchers_average_age = st.sidebar.text_input("Pitchers Average Age", "25-30")
+pitchers_average_age = st.sidebar.selectbox("Pitchers Average Age", ['25-30', '30-35', '35-40', 'Other'])
 industry = st.sidebar.selectbox("Industry", ['Agriculture', 'Animal/Pets', 'Beauty/Fashion', 'Education', 'Electronics', 'Entertainment', 'Food', 'Furnishing/Household', 'Hardware', 'Liquor/Beverages', 'Manufacturing', 'Medical/Health', 'Services', 'Sports', 'Technology/Software', 'Vehicles/Electrical Vehicles'])
 region = st.sidebar.selectbox("Region", ['Central', 'East', 'North', 'Northeast', 'South', 'West'])
 deal_has_conditions = st.sidebar.selectbox("Deal has conditions", ['no', 'yes'])
@@ -34,11 +46,8 @@ new_data = pd.DataFrame({
     'Deal has conditions': [deal_has_conditions]
 })
 
-# Apply the label encoding to the 'Pitchers Average Age' column
-#new_data['Pitchers Average Age'] = label_encoder.transform(new_data['Pitchers Average Age'])
-
-new_data['Pitchers Average Age'] = new_data['Pitchers Average Age'].apply(lambda x: x if x in label_encoder.classes_ else 'default_value')
-new_data['Pitchers Average Age'] = label_encoder.transform(new_data['Pitchers Average Age'])
+# Apply custom label encoding to the 'Pitchers Average Age' column
+new_data['Pitchers Average Age'] = new_data['Pitchers Average Age'].apply(custom_label_encode)
 
 # Perform one-hot encoding on new data
 new_data = pd.get_dummies(new_data, columns=['Industry', 'Region', 'Deal has conditions'])
@@ -59,7 +68,6 @@ if st.button("Make Prediction"):
 # Data source and information
 st.markdown("Data source: Your data source here")
 st.markdown("This is a Streamlit app for predicting the outcome of a pitch on Shark Tank India using a trained machine learning model.")
-
 
 if __name__ == '__main__':
     main()
