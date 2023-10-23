@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
-
+from sklearn.preprocessing import LabelEncoder
 # Load the trained model
 model_filename = 'random_forest_model.joblib'
 loaded_model = joblib.load(model_filename)
