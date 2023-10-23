@@ -102,7 +102,8 @@ for column in missing_columns:
 
 if st.button("Make Prediction"):
     prediction = loaded_model.predict(new_data[predcol])
-    confidence = loaded_model.predict_proba(new_data[predcol])[0]
+    confidence = loaded_model.predict_proba(new_data[predcol])[0][1]
+    print(confidence)
     st.subheader("Prediction")
     if prediction[0] == 1:
         st.write(f"Accepted Offer✔ with confidence score {round(confidence, 4)*100}%")
