@@ -85,4 +85,4 @@ Please feel free to explore the [Streamlit app](https://crisp-dm.streamlit.app/)
 
 
 
-#Enjoy exploring and predicting the outcomes of your Shark Tank pitches!
+*Enjoy exploring and predicting the outcomes of your Shark Tank pitches!*
