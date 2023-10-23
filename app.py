@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 
 # Load the trained model
-model_filename = 'random_forest_model.joblib'
+model_filename = 'Model/random_forest_model.joblib'
 loaded_model = joblib.load(model_filename)
 
 # Load the data preprocessing steps
