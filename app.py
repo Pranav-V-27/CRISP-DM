@@ -8,6 +8,7 @@ loaded_model = joblib.load(model_filename)
 
 # Load the data preprocessing steps
 label_encoder, encoded_columns = joblib.load('data_preprocessing.joblib')
+label_encoder = LabelEncoder(handle_unknown='use_encoded_value', unknown_value=-1)
 
 # Title
 st.title("Shark Tank India Prediction App")
@@ -34,6 +35,9 @@ new_data = pd.DataFrame({
 })
 
 # Apply the label encoding to the 'Pitchers Average Age' column
+#new_data['Pitchers Average Age'] = label_encoder.transform(new_data['Pitchers Average Age'])
+
+new_data['Pitchers Average Age'] = new_data['Pitchers Average Age'].apply(lambda x: x if x in label_encoder.classes_ else 'default_value')
 new_data['Pitchers Average Age'] = label_encoder.transform(new_data['Pitchers Average Age'])
 
 # Perform one-hot encoding on new data
