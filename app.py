@@ -106,7 +106,7 @@ if st.button("Make Prediction"):
     print(confidence)
     st.subheader("Prediction")
     if prediction[0] == 1:
-        st.write(f"Accepted Offer✔ with confidence score {round(confidence, 4)*100}%")
+        st.write(f"Accepted Offer✔ with confidence score {int(confidence*10000)/100}%")
     else:
         st.write("Not Accepted Offer❌")
 
