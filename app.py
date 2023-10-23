@@ -112,7 +112,7 @@ if st.button("Make Prediction"):
 
 # Data source and information
 # st.markdown("Data source: Your data source here")
-markdown_string = """## Sharktank Offer Outcome Prediction Model
+markdown_string = """## Shark Tank Offer Outcome Prediction Model
 
 This is a Streamlit app for predicting the outcome of a pitch on Shark Tank India using a trained machine learning model.
 
