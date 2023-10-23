@@ -55,3 +55,7 @@ if st.button("Make Prediction"):
 # Data source and information
 st.markdown("Data source: Your data source here")
 st.markdown("This is a Streamlit app for predicting the outcome of a pitch on Shark Tank India using a trained machine learning model.")
+
+
+if __name__ == '__main__':
+    main()
