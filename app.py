@@ -9,9 +9,7 @@ predcol = ['Number of Presenters', 'Male Presenters', 'Female Presenters',
        'Transgender Presenters', 'Couple Presenters', 'Pitchers Average Age',
        'Started in', 'Yearly Revenue', 'Monthly Sales', 'Gross Margin',
        'Net Margin', 'Original Ask Amount', 'Original Offered Equity',
-       'Valuation Requested', 'Total Deal Amount', 'Total Deal Equity',
-       'Total Deal Debt', 'Debt Interest', 'Deal Valuation',
-       'Number of sharks in deal', 'Has Patents', 'Industry_Agriculture',
+       'Valuation Requested', 'Has Patents', 'Industry_Agriculture',
        'Industry_Animal/Pets', 'Industry_Beauty/Fashion', 'Industry_Education',
        'Industry_Electronics', 'Industry_Entertainment', 'Industry_Food',
        'Industry_Furnishing/Household', 'Industry_Hardware',
@@ -56,12 +54,12 @@ net_margin = st.sidebar.number_input("Net Margin", min_value=0, value=5)
 original_ask_amount = st.sidebar.number_input("Original Ask Amount", min_value=0, value=100)
 original_offered_equity = st.sidebar.number_input("Original Offered Equity", min_value=0, value=20)
 valuation_requested = st.sidebar.number_input("Valuation Requested", min_value=0, value=200)
-total_deal_amount = st.sidebar.number_input("Total Deal Amount", min_value=0, value=300)
-total_deal_equity = st.sidebar.number_input("Total Deal Equity", min_value=0, value=50)
-total_deal_debt = st.sidebar.number_input("Total Deal Debt", min_value=0, value=30)
-debt_interest = st.sidebar.number_input("Debt Interest", min_value=0, value=2)
-deal_valuation = st.sidebar.number_input("Deal Valuation", min_value=0, value=250)
-number_of_sharks_in_deal = st.sidebar.number_input("Number of Sharks in Deal", min_value=0, value=3)
+# total_deal_amount = st.sidebar.number_input("Total Deal Amount", min_value=0, value=300)
+# total_deal_equity = st.sidebar.number_input("Total Deal Equity", min_value=0, value=50)
+# total_deal_debt = st.sidebar.number_input("Total Deal Debt", min_value=0, value=30)
+# debt_interest = st.sidebar.number_input("Debt Interest", min_value=0, value=2)
+# deal_valuation = st.sidebar.number_input("Deal Valuation", min_value=0, value=250)
+# number_of_sharks_in_deal = st.sidebar.number_input("Number of Sharks in Deal", min_value=0, value=3)
 has_patents = st.sidebar.selectbox("Has Patents", ['No', 'Yes'])
 industry = st.sidebar.selectbox("Industry", ['Agriculture', 'Animal/Pets', 'Beauty/Fashion', 'Education', 'Electronics', 'Entertainment', 'Food', 'Furnishing/Household', 'Hardware', 'Liquor/Beverages', 'Manufacturing', 'Medical/Health', 'Services', 'Sports', 'Technology/Software', 'Vehicles/Electrical Vehicles'])
 region = st.sidebar.selectbox("Region", ['Central', 'East', 'North', 'Northeast', 'South', 'West'])
@@ -79,12 +77,12 @@ new_data = pd.DataFrame({
     'Original Ask Amount': [original_ask_amount],
     'Original Offered Equity': [original_offered_equity],
     'Valuation Requested': [valuation_requested],
-    'Total Deal Amount': [total_deal_amount],
-    'Total Deal Equity': [total_deal_equity],
-    'Total Deal Debt': [total_deal_debt],
-    'Debt Interest': [debt_interest],
-    'Deal Valuation': [deal_valuation],
-    'Number of Sharks in Deal': [number_of_sharks_in_deal],
+    # 'Total Deal Amount': [total_deal_amount],
+    # 'Total Deal Equity': [total_deal_equity],
+    # 'Total Deal Debt': [total_deal_debt],
+    # 'Debt Interest': [debt_interest],
+    # 'Deal Valuation': [deal_valuation],
+    # 'Number of Sharks in Deal': [number_of_sharks_in_deal],
     'Has Patents': [has_patents],
     'Industry': [industry],
     'Region': [region],
@@ -111,7 +109,7 @@ if st.button("Make Prediction"):
         st.write("Not Accepted Offer")
 
 # Data source and information
-st.markdown("Data source: Your data source here")
+# st.markdown("Data source: Your data source here")
 st.markdown("This is a Streamlit app for predicting the outcome of a pitch on Shark Tank India using a trained machine learning model.")
 
 #if __name__ == '__main__':
