@@ -1,4 +1,5 @@
-!pip install tensorflow
+FROM python:3.8
+RUN pip install tensorflow
 import streamlit as st
 import pandas as pd
 import numpy as np
