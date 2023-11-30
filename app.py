@@ -138,7 +138,7 @@ if st.button("Make Prediction"):
         shark_preds = model.predict(new_data[nn_pred_col])
         shark_preds = shark_preds[0]
         print(shark_preds)
-        print(pd.DataFrame(shark_preds).T)
+        print(pd.DataFrame(shark_preds))
         # save the following plot as a png file and display it in streamlit
         # op = pd.DataFrame(output).T
         # op.index = sharks
@@ -157,7 +157,7 @@ if st.button("Make Prediction"):
 
         # # Show the plot
         # plt.show()
-        op = pd.DataFrame(shark_preds).T
+        op = pd.DataFrame(shark_preds)
         op.index = ['Ashneer', 'Namita', 'Anupam', 'Vineeta', 'Aman', 'Peyush', 'Ghazal', 'Amit', 'Guest']
         st.bar_chart(op[0])
     else:
