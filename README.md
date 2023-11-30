@@ -81,7 +81,7 @@ The dataset contains 64 fields/columns, and here is an overview of each field:
 
 For more details, refer to the [GitHub repository](https://github.com/Pranav-V-27/CRISP-DM) for the code and project documentation.
 
-Please feel free to explore the [Streamlit app](https://crisp-dm-final.streamlit.app/)) for interactive prediction based on your input.
+Please feel free to explore the [Streamlit app](https://crisp-dm-final.streamlit.app/) for interactive prediction based on your input.
 
 
 
