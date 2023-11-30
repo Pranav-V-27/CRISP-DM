@@ -24,6 +24,21 @@ predcol = ['Number of Presenters', 'Male Presenters', 'Female Presenters',
        'Region_South', 'Region_West', 'Deal has conditions_no',
        'Deal has conditions_yes']
 
+nn_pred_col = ['Number of Presenters', 'Male Presenters', 'Female Presenters',
+       'Transgender Presenters', 'Couple Presenters', 'Pitchers Average Age',
+       'Started in', 'Yearly Revenue', 'Monthly Sales', 'Gross Margin',
+       'Net Margin', 'Original Ask Amount', 'Original Offered Equity',
+       'Valuation Requested', 'Has Patents', 'Industry_Agriculture',
+       'Industry_Animal/Pets', 'Industry_Beauty/Fashion', 'Industry_Education',
+       'Industry_Electronics', 'Industry_Entertainment', 'Industry_Food',
+       'Industry_Furnishing/Household', 'Industry_Hardware',
+       'Industry_Liquor/Beverages', 'Industry_Manufacturing',
+       'Industry_Medical/Health', 'Industry_Services', 'Industry_Sports',
+       'Industry_Technology/Software', 'Industry_Vehicles/Electrical Vehicles',
+       'Region_Central', 'Region_East', 'Region_North', 'Region_Northeast',
+       'Region_South', 'Region_West']
+
+
 # Load the data preprocessing steps
 _, encoded_columns = joblib.load('data_preprocessing.joblib')
 
@@ -118,7 +133,7 @@ if st.button("Make Prediction"):
     st.subheader("Prediction")
     if prediction[0] == 1:
         st.write(f"Accepted Offer✔ with confidence score {int(confidence*10000)/100}%")
-        shark_preds = model.predict(new_data[predcol])
+        shark_preds = model.predict(new_data[nn_pred_col])
         shark_preds = shark_preds[0]
         print(shark_preds)
         print(pd.DataFrame(shark_preds).T)
