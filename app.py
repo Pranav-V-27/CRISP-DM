@@ -2,6 +2,10 @@ import streamlit as st
 import pandas as pd
 import joblib
 
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
 # Load the trained model
 model_filename = 'random_forest_model.joblib'
 loaded_model = joblib.load(model_filename)
@@ -100,6 +104,13 @@ missing_columns = set(encoded_columns) - set(new_data.columns)
 for column in missing_columns:
     new_data[column] = 0  # Add missing columns with all zeros
 
+model = Sequential()
+model.add(Dense(64, input_shape = (37,), activation = 'swish'))
+model.add(Dense(16, activation = 'swish'))
+model.add(Dense(9, activation = 'sigmoid'))
+
+model.load_weights('sharks.h5')
+
 if st.button("Make Prediction"):
     prediction = loaded_model.predict(new_data[predcol])
     confidence = loaded_model.predict_proba(new_data[predcol])[0][1]
@@ -107,6 +118,10 @@ if st.button("Make Prediction"):
     st.subheader("Prediction")
     if prediction[0] == 1:
         st.write(f"Accepted Offer✔ with confidence score {int(confidence*10000)/100}%")
+        shark_preds = model.predict(new_data[predcol])
+        shark_preds = shark_preds[0]
+        print(shark_preds)
+        print(pd.DataFrame(shark_preds).T)
     else:
         st.write("Not Accepted Offer❌")
 
