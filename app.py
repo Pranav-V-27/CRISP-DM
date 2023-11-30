@@ -1,6 +1,12 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
 
 # Load the trained model
 model_filename = 'random_forest_model.joblib'
@@ -19,6 +25,21 @@ predcol = ['Number of Presenters', 'Male Presenters', 'Female Presenters',
        'Region_Central', 'Region_East', 'Region_North', 'Region_Northeast',
        'Region_South', 'Region_West', 'Deal has conditions_no',
        'Deal has conditions_yes']
+
+nn_pred_col = ['Number of Presenters', 'Male Presenters', 'Female Presenters',
+       'Transgender Presenters', 'Couple Presenters', 'Pitchers Average Age',
+       'Started in', 'Yearly Revenue', 'Monthly Sales', 'Gross Margin',
+       'Net Margin', 'Original Ask Amount', 'Original Offered Equity',
+       'Valuation Requested', 'Has Patents', 'Industry_Agriculture',
+       'Industry_Animal/Pets', 'Industry_Beauty/Fashion', 'Industry_Education',
+       'Industry_Electronics', 'Industry_Entertainment', 'Industry_Food',
+       'Industry_Furnishing/Household', 'Industry_Hardware',
+       'Industry_Liquor/Beverages', 'Industry_Manufacturing',
+       'Industry_Medical/Health', 'Industry_Services', 'Industry_Sports',
+       'Industry_Technology/Software', 'Industry_Vehicles/Electrical Vehicles',
+       'Region_Central', 'Region_East', 'Region_North', 'Region_Northeast',
+       'Region_South', 'Region_West']
+
 
 # Load the data preprocessing steps
 _, encoded_columns = joblib.load('data_preprocessing.joblib')
@@ -100,6 +121,13 @@ missing_columns = set(encoded_columns) - set(new_data.columns)
 for column in missing_columns:
     new_data[column] = 0  # Add missing columns with all zeros
 
+model = Sequential()
+model.add(Dense(64, input_shape = (37,), activation = 'swish'))
+model.add(Dense(16, activation = 'swish'))
+model.add(Dense(9, activation = 'sigmoid'))
+
+model.load_weights('sharks.h5')
+
 if st.button("Make Prediction"):
     prediction = loaded_model.predict(new_data[predcol])
     confidence = loaded_model.predict_proba(new_data[predcol])[0][1]
@@ -107,6 +135,13 @@ if st.button("Make Prediction"):
     st.subheader("Prediction")
     if prediction[0] == 1:
         st.write(f"Accepted Offer✔ with confidence score {int(confidence*10000)/100}%")
+        shark_preds = model.predict(new_data[nn_pred_col])
+        shark_preds = shark_preds[0]
+        op = pd.DataFrame(shark_preds)
+        op.index = ['Ashneer', 'Namita', 'Anupam', 'Vineeta', 'Aman', 'Peyush', 'Ghazal', 'Amit', 'Guest']
+        # remove the Guest row
+        op = op.iloc[:-1]
+        st.bar_chart(op[0])
     else:
         st.write("Not Accepted Offer❌")
 
