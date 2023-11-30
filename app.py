@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
@@ -137,6 +139,27 @@ if st.button("Make Prediction"):
         shark_preds = shark_preds[0]
         print(shark_preds)
         print(pd.DataFrame(shark_preds).T)
+        # save the following plot as a png file and display it in streamlit
+        # op = pd.DataFrame(output).T
+        # op.index = sharks
+
+        # # Plotting using Seaborn and Matplotlib
+        # sns.set(style="whitegrid")  # Set Seaborn style
+        # plt.figure(figsize=(10, 6))  # Set the figure size
+
+        # # Plot the horizontal bar chart
+        # sns.barplot(x=op[0].iloc[:-1], y=op.index[:-1], palette="viridis")
+
+        # # Set labels and title
+        # plt.xlabel('Sharks')
+        # plt.ylabel('Probability of Investment')
+        # plt.title('Shark Investment Probability')
+
+        # # Show the plot
+        # plt.show()
+        op = pd.DataFrame(shark_preds).T
+        op.index = ['Ashneer', 'Namita', 'Anupam', 'Vineeta', 'Aman', 'Peyush', 'Ghazal', 'Amit', 'Guest']
+        st.bar_chart(op[0])
     else:
         st.write("Not Accepted Offer❌")
 
