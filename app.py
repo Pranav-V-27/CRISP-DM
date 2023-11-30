@@ -140,7 +140,7 @@ if st.button("Make Prediction"):
         op = pd.DataFrame(shark_preds)
         op.index = ['Ashneer', 'Namita', 'Anupam', 'Vineeta', 'Aman', 'Peyush', 'Ghazal', 'Amit', 'Guest']
         # remove the Guest row
-        op = op.drop([8])
+        op = op.iloc[:-1]
         st.bar_chart(op[0])
     else:
         st.write("Not Accepted Offer❌")
