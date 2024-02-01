@@ -87,4 +87,6 @@ Please feel free to explore the [Streamlit app](https://crisp-dm-final.streamlit
 
 *Enjoy exploring and predicting the outcomes of your Shark Tank pitches!*
 
-Disclaimer : This is for Acadamic and Educational purpose only 
+Disclaimer : This project is for educational and experimental purposes only. The generated text may not always make sense, and the model's output should not be taken as factual or accurate. The author is not responsible for any misuse or misinterpretation of the generated content.
+
+Feel free to explore and modify the code for your own text generation experiments!
